@@ -1,0 +1,40 @@
+# pass via cli to override configurations
+user_config: null
+
+# Mesh sampler 
+sampler:
+  # list of meshes to sample points from
+  input_meshes: ['/scratch1/fon022/MongeNet/resources/plant.off', '/scratch1/fon022/MongeNet/resources/airplane.off', '/scratch1/fon022/MongeNet/resources/bench.ply']
+  # number of sampled points per mesh
+  num_sampled_points: 10000
+  # output directory to save sampled point cloud
+  output_dir: /scratch1/fon022/MongeNet/checkpoints/sampling/
+  # suffix for output point cloud files
+  output_file_suffix: PCL${sampler.num_sampled_points} 
+  # compute normals
+  compute_normals: True
+  # triangles batch size for netwrok prediction
+  network_batch_size: 25000
+
+# MongeNet model options
+mongenet:
+  # maximum number of points sampled for a given triangle
+  max_points: 30
+  # dropout ratio
+  dropout: 0.8
+  # unit square to triangle mapping [lowdistortion, parallelogram]
+  parametrization: lowdistortion
+  # format of the random input [normal (N(0,1)), uniform (U(-1, 1))]
+  random_input: normal
+  # neural network architecture [2_hl, 3_hl, 4_hl] 
+  arch_type: 3_hl
+  # pytorch device to run the code
+  device: cuda:0
+  # path to checkpoint file
+  checkpoint: /scratch1/fon022/MongeNet/resources/mongenet_weights.tar
+
+# hydra configurations and log files (do not change)
+hydra:
+  run:
+    dir: ${sampler.output_dir}
+  output_subdir: null

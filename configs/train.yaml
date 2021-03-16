@@ -1,0 +1,48 @@
+# pass via cli to override configurations
+user_config: null
+
+# model training configurations
+trainer:
+  # glob string to load triangle datasets
+  data_glob_str: /scratch1/fon022/MongeNet/resources/dataset/approx_2D_mamanifold/dataset_*
+  # model batch size
+  batch_size: 32
+  # number of training samples per triangle dataset
+  num_train_samples: 10000
+  # number of test samples per triangle dataset
+  num_test_samples: 2000
+  # number of training epochs
+  num_epochs: 300
+  # number of batches to form an train epoch
+  train_epoch_size: 50
+  # number of epochs between test iterations
+  test_inteval: 4
+  # number of batches to form a test epoch
+  test_epoch_size: 10
+  # output directory
+  output_dir: /scratch1/fon022/MongeNet/checkpoints/train/debug/
+  # adam learning rate
+  adam_lr: 0.01
+  # diversity regularizer coefficient
+  reg_coef: 0.1
+
+# MongeNet model options
+mongenet:
+  # maximum number of points sampled for a given triangle
+  max_points: 30
+  # dropout ratio
+  dropout: 0.8
+  # unit square to triangle mapping [lowdistortion, parallelogram]
+  parametrization: lowdistortion
+  # format of the random input [normal (N(0,1)), uniform (U(-1, 1))]
+  random_input: normal
+  # neural network architecture [2_hl, 3_hl, 4_hl] 
+  arch_type: 3_hl
+  # pytorch device to run the code
+  device: 'cuda:0'
+
+# hydra configurations and log files (do not change)
+hydra:
+  run:
+    dir: ${trainer.output_dir}
+  output_subdir: null
