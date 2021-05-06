@@ -10,7 +10,7 @@ header:
   "
   actions:
     - label: "Paper"
-      url: "https://github.com/lebrat/MongeNet"
+      url: "https://arxiv.org/abs/2104.14554"
     - label: "Code"
       url: "https://github.com/lebrat/MongeNet"
     - label: "Slides"
