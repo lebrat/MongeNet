@@ -14,9 +14,9 @@ header:
     - label: "Code"
       url: "https://github.com/lebrat/MongeNet"
     - label: "Slides"
-      url: "https://github.com/lebrat/MongeNet"
-    - label: "Talk"
-      url: "https://github.com/lebrat/MongeNet"
+      url: "https://github.com/lebrat/MongeNet/blob/d22a477c1711986e286966355ef6fa593aecd815/docs/assets/pdf/MongeNet_slides.pdf"
+    - label: "Poster"
+      url: "https://github.com/lebrat/MongeNet/blob/d22a477c1711986e286966355ef6fa593aecd815/docs/assets/pdf/MongeNet_poster.pdf"
 gallery_voronoi:
   - url: /assets/images/voronoi_monge.gif
     image_path: /assets/images/voronoi_monge.gif
